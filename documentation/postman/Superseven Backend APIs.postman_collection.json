@@ -1,0 +1,2533 @@
+{
+	"info": {
+		"_postman_id": "1fbeaaa8-c8a4-41cc-8f74-213aa7d1cb55",
+		"name": "Superseven Backend APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43534723",
+		"_collection_link": "https://paulus-907141.postman.co/workspace/Paulus's-Workspace~ef7e1463-9a36-4952-8555-7ac4d0b7cb98/collection/43534723-1fbeaaa8-c8a4-41cc-8f74-213aa7d1cb55?action=share&source=collection_link&creator=43534723"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Paul Jairus",
+									"type": "text"
+								},
+								{
+									"key": "mid_name",
+									"value": "Autentico",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Caberte",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "jairus@blendit.eu",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "testuser123",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "testuser123",
+									"type": "text"
+								},
+								{
+									"key": "contact_no",
+									"value": "09292802802",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Hinlayagan Ilaya, Trinidad, Bohol",
+									"type": "text"
+								},
+								{
+									"key": "customer_type",
+									"value": "1",
+									"description": "1 = Client\n2 = Coordinaror\n3 = Owner\n4 = Secretary\n5= Photographer\n6 = Editor\n7 = Freelancer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register Customer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "first_name",
+											"value": "Paul Jairus",
+											"type": "text"
+										},
+										{
+											"key": "mid_name",
+											"value": "Autentico",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "Caberte",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "jairus@blendit.eu",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "testuser123",
+											"type": "text"
+										},
+										{
+											"key": "confirm_password",
+											"value": "testuser123",
+											"type": "text"
+										},
+										{
+											"key": "contact_no",
+											"value": "09292802802",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "Hinlayagan Ilaya, Trinidad, Bohol",
+											"type": "text"
+										},
+										{
+											"key": "customer_type",
+											"value": "1",
+											"description": "1 = Client\n2 = Coordinaror\n3 = Owner\n4 = Secretary\n5= Photographer\n6 = Editor\n7 = Freelancer",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.6"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 May 2025 11:16:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "superseven_management_booking_system_session=u8icaTxrviO3G3a90gyxmZbUtDr8zT4bFRX8D6hG; expires=Fri, 23 May 2025 13:16:47 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"User registered successfully.\",\n    \"data\": {\n        \"id\": 5,\n        \"first_name\": \"Paul Jairus\",\n        \"mid_name\": \"Autentico\",\n        \"last_name\": \"Caberte\",\n        \"full_name\": \"Paul Jairus Autentico Caberte\",\n        \"email\": \"jairus@blendit.eu\",\n        \"contact_num\": \"09292802802\",\n        \"address\": \"Hinlayagan Ilaya, Trinidad, Bohol\",\n        \"email_verified_at\": null,\n        \"user_type\": \"Customer\",\n        \"user_role\": \"Client\",\n        \"status\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code === 200) {",
+									"    const responseJson = pm.response.json();",
+									"    const accessToken = responseJson.access_token;",
+									"    pm.environment.set('access_token', accessToken);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "loniejaydalaygon@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "lonie jay dalaygon",
+									"type": "text"
+								},
+								{
+									"key": "remember",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin_owner@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "TestUser123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.6"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 May 2025 11:17:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "superseven_management_booking_system_session=tBfr9px2JLYJfFvVIVFPs4B5QYDvIidGtMeNU8vH; expires=Fri, 23 May 2025 13:17:20 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"User logged in successfully.\",\n    \"data\": {\n        \"id\": 1,\n        \"first_name\": \"Test\",\n        \"mid_name\": \"\",\n        \"last_name\": \"Owner\",\n        \"full_name\": \"Test  Owner\",\n        \"email\": \"admin_owner@test.com\",\n        \"contact_num\": \"09123456789\",\n        \"address\": \"Test Address\",\n        \"email_verified_at\": \"2025-05-23T11:15:37.000000Z\",\n        \"user_type\": \"Employee\",\n        \"user_role\": \"Owner\",\n        \"status\": \"active\"\n    },\n    \"access_token\": \"1|jveldFoASCMm4Evp98nEH0TJJjgoAAcdTSpttfwz763059fa\",\n    \"token_type\": \"Bearer\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code === 200) {",
+									"    pm.environment.set('access_token', '');",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.6"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 23 May 2025 11:17:38 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "superseven_management_booking_system_session=tBfr9px2JLYJfFvVIVFPs4B5QYDvIidGtMeNU8vH; expires=Fri, 23 May 2025 13:17:38 GMT; Max-Age=7200; path=/; domain=localhost; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Logged Out!\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "testuser123",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "testuser123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/users/update-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"update-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Current User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Paul",
+									"type": "text"
+								},
+								{
+									"key": "mid_name",
+									"value": "Authentico",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Caberte",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "pauljairuscaberte34@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "contact_no",
+									"value": "09292802802",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Hinlayagan Ilaya, Trinidad, Bohol",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/users/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Authenticated User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/users/current",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"current"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Get Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/employees?search[value]=&filters[user_type]=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "search[value]",
+									"value": ""
+								},
+								{
+									"key": "filters[user_type]",
+									"value": "",
+									"description": "4 = Secretary\n5 = Photographer\n6 = Editor\n7 = Freelancer"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Marus",
+									"type": "text"
+								},
+								{
+									"key": "mid_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Damgo",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "marcus@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "testuser123",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "confirm_password",
+									"value": "testuser123",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contact_no",
+									"value": "09292802801",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Loay, Bohol",
+									"type": "text"
+								},
+								{
+									"key": "user_type",
+									"value": "4",
+									"description": "4 = Secretary\n5 = Photographer\n6 = Editor\n7 = Freelancer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/employees/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Lonie Jay",
+									"type": "text"
+								},
+								{
+									"key": "mid_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Dalaygon",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "secretary@test.com",
+									"type": "text"
+								},
+								{
+									"key": "contact_no",
+									"value": "09292802801",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Loay, Bohol",
+									"type": "text"
+								},
+								{
+									"key": "user_type",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/employees/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/customers?search[value]&filters[user_type]=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "search[value]",
+									"value": null
+								},
+								{
+									"key": "filters[user_type]",
+									"value": "1",
+									"description": "1 = Client\n2 = Coordinator"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Juan",
+									"type": "text"
+								},
+								{
+									"key": "mid_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Dela Cruz",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "juan@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "contact_no",
+									"value": "09293829819",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Tagbilaran City, Bohol",
+									"type": "text"
+								},
+								{
+									"key": "user_type",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/customers/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Package",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Fetch packages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/customer/packages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"packages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Create Package",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "package_name",
+											"value": "Package A",
+											"type": "text"
+										},
+										{
+											"key": "package_details",
+											"value": "This is the details of package a",
+											"type": "text"
+										},
+										{
+											"key": "package_price",
+											"value": "5000.00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/packages/add",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"packages",
+										"add"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Packages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/packages?search[value]=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"packages"
+									],
+									"query": [
+										{
+											"key": "search[value]",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Package",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "package_name",
+											"value": "Package D",
+											"type": "text"
+										},
+										{
+											"key": "package_details",
+											"value": "This is the details of package d",
+											"type": "text"
+										},
+										{
+											"key": "package_price",
+											"value": "7000.00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/packages/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"packages",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Package",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/packages/1/delete",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"packages",
+										"1",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Addon",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Create Addon",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "add_on_name",
+											"value": "Addon C",
+											"type": "text"
+										},
+										{
+											"key": "add_on_details",
+											"value": "This is the details of addon c",
+											"type": "text"
+										},
+										{
+											"key": "add_on_price",
+											"value": "1500.00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/addons/add",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"addons",
+										"add"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Addon",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/addons?search[value]=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"addons"
+									],
+									"query": [
+										{
+											"key": "search[value]",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Package",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "add_on_name",
+											"value": "Addon A",
+											"type": "text"
+										},
+										{
+											"key": "add_on_details",
+											"value": "This is the details of addon a",
+											"type": "text"
+										},
+										{
+											"key": "add_on_price",
+											"value": "1600.00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/addons/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"addons",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Package",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/addons/3/delete",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"addons",
+										"3",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Fetch Addons",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/customer/addons",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"addons"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Fetch Bookings",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/customer/bookings?month=2&year=2026",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"bookings"
+									],
+									"query": [
+										{
+											"key": "month",
+											"value": "2"
+										},
+										{
+											"key": "year",
+											"value": "2026"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Booking",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_date",
+											"value": " 2025-07-22",
+											"type": "text"
+										},
+										{
+											"key": "package_id",
+											"value": " 3",
+											"type": "text"
+										},
+										{
+											"key": "event_name",
+											"value": " Santos-Bautista Beach Wedding",
+											"type": "text"
+										},
+										{
+											"key": "booking_address",
+											"value": " Dumaluan Beach, Panglao",
+											"type": "text"
+										},
+										{
+											"key": "addon_id[0]",
+											"value": " 1",
+											"type": "text"
+										},
+										{
+											"key": "addon_id[1]",
+											"value": " 2",
+											"type": "text"
+										},
+										{
+											"key": "addon_id[2]",
+											"value": " 3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/customer/bookings/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"bookings",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Booking",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_date",
+											"value": "2026-02-02",
+											"type": "text"
+										},
+										{
+											"key": "event_name",
+											"value": "Paul Birthday Shoot",
+											"type": "text"
+										},
+										{
+											"key": "booking_address",
+											"value": "Hinlayagan Ilaya, Trinidad, Bohol",
+											"type": "text"
+										},
+										{
+											"key": "package_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "addon_id[0]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "addon_id[1]",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/customer/bookings/12/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"bookings",
+										"12",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete booking",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/customer/bookings/13/delete",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"bookings",
+										"13",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Booking",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/customer/bookings/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"bookings",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Add Booking",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_date",
+											"value": " 2025-07-10",
+											"type": "text"
+										},
+										{
+											"key": "package_id",
+											"value": " 1",
+											"type": "text"
+										},
+										{
+											"key": "event_name",
+											"value": " Lonie and Kai's Prenup Shoot",
+											"type": "text"
+										},
+										{
+											"key": "booking_address",
+											"value": " Chocolate Hills",
+											"type": "text"
+										},
+										{
+											"key": "addon_id[0]",
+											"value": " 1",
+											"type": "text"
+										},
+										{
+											"key": "addon_id[1]",
+											"value": " 3",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": " Lonie Jay",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": " Dalaygon",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": " Loay, Bohol",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": " loniejaydalaygon@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "contact_no",
+											"value": " 09309472869",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/bookings/add",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"bookings",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Booking",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_date",
+											"value": "2025-06-29",
+											"type": "text"
+										},
+										{
+											"key": "package_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "event_name",
+											"value": "Lonie & Kai's Wedding",
+											"type": "text"
+										},
+										{
+											"key": "booking_address",
+											"value": "Tagbilaran City",
+											"type": "text"
+										},
+										{
+											"key": "addon_id[0]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "addon_id[1]",
+											"value": "3",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/bookings/6/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"bookings",
+										"6",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Booking",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/bookings/2/delete",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"bookings",
+										"2",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Booking Data",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/bookings?month=7&year=2025&filters[booked]=true&filters[pending]=true&filters[for_resched]=true",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"bookings"
+									],
+									"query": [
+										{
+											"key": "month",
+											"value": "7"
+										},
+										{
+											"key": "year",
+											"value": "2025"
+										},
+										{
+											"key": "filters[booked]",
+											"value": "true"
+										},
+										{
+											"key": "filters[pending]",
+											"value": "true"
+										},
+										{
+											"key": "filters[for_resched]",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reschedule Booking",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_date",
+											"value": "2025-07-28",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/bookings/24/reschedule",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"bookings",
+										"24",
+										"reschedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set booking to Approve",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/bookings/12/approve",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"bookings",
+										"12",
+										"approve"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set booking to Rejected",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/bookings/12/reject",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"bookings",
+										"12",
+										"reject"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Booking",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/bookings/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"bookings",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Packages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/bookings/packages",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bookings",
+								"packages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Addons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/bookings/1/addons",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bookings",
+								"1",
+								"addons"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Unavailable Dates",
+			"item": [
+				{
+					"name": "Mark Unavailable Date",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "date",
+									"value": "2025-09-01",
+									"type": "text"
+								},
+								{
+									"key": "reason",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/unavailable-dates/mark",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"unavailable-dates",
+								"mark"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unmarked",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/unavailable-dates/6/unmark",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"unavailable-dates",
+								"6",
+								"unmark"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Unavailable Dates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/unavailable-dates?month=5&year=2025",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"unavailable-dates"
+							],
+							"query": [
+								{
+									"key": "month",
+									"value": "5"
+								},
+								{
+									"key": "year",
+									"value": "2025"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Billings",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Get Billings",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/billings?search[value]=&start_year=2025&end_year=2026",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"billings"
+									],
+									"query": [
+										{
+											"key": "search[value]",
+											"value": ""
+										},
+										{
+											"key": "start_year",
+											"value": "2025"
+										},
+										{
+											"key": "end_year",
+											"value": "2026"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "amount",
+											"value": "750",
+											"type": "text"
+										},
+										{
+											"key": "payment_method",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "remarks",
+											"value": "Paid remaining amount",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/billings/1/add-payment",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"billings",
+										"1",
+										"add-payment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Billing",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/billings/7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"billings",
+										"7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "Fetch Billings",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/customer/billings?search[value]=&start_year=2025&end_year=2026",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"billings"
+									],
+									"query": [
+										{
+											"key": "search[value]",
+											"value": ""
+										},
+										{
+											"key": "start_year",
+											"value": "2025"
+										},
+										{
+											"key": "end_year",
+											"value": "2026"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Billing",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/customer/billings/13",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"billings",
+										"13"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Workload",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Assign Workload",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "deliverable_status",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "link",
+											"value": "https://drive.google.com/drive/folders/1KmG7nYn_FpSFYQYcybLGq75cV34xMBVJ?usp=drive_link",
+											"type": "text"
+										},
+										{
+											"key": "user_id[0]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "user_id[1]",
+											"value": "4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/workload/2/assign",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"workload",
+										"2",
+										"assign"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Workloads",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/workload?search[value]=&filters[deliverable_status]=false",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"workload"
+									],
+									"query": [
+										{
+											"key": "search[value]",
+											"value": ""
+										},
+										{
+											"key": "filters[deliverable_status]",
+											"value": "false",
+											"description": "0 => Unassigned\n1 => Scheduled\n2 => Active\n3 => Editing\n4 => For Release\n5 => Completed"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Workload",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/workload/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"workload",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get List of Employees",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/workload/1/employees",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"workload",
+										"1",
+										"employees"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "Get Workloads",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/employee/workloads?search[value]=&filters[deliverable_status]=false",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"employee",
+										"workloads"
+									],
+									"query": [
+										{
+											"key": "search[value]",
+											"value": ""
+										},
+										{
+											"key": "filters[deliverable_status]",
+											"value": "false",
+											"description": "3 => Editing\n4 => For Release\n5 => Completed"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Workload",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/employee/workloads/12/view",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"employee",
+										"workloads",
+										"12",
+										"view"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update workload",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "workload_status",
+											"value": "2",
+											"description": "For Photographer:\n2 => Uploaded\n\nFor Editor:\n4 => Editing\n5 => For Release",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/employee/workloads/1/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"employee",
+										"workloads",
+										"1",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Feedback",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "fetch feedbacks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/feedbacks?search[value]=&filters[posted]=false&filters[unposted]=false&filters[pending]=false",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"feedbacks"
+									],
+									"query": [
+										{
+											"key": "search[value]",
+											"value": ""
+										},
+										{
+											"key": "filters[posted]",
+											"value": "false"
+										},
+										{
+											"key": "filters[unposted]",
+											"value": "false"
+										},
+										{
+											"key": "filters[pending]",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Feedback",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/feedbacks/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"feedbacks",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mark Feedback as posted",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/feedbacks/1/mark-as-posted",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"feedbacks",
+										"1",
+										"mark-as-posted"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mark feedback as unposted",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/feedbacks/1/mark-as-unposted",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"feedbacks",
+										"1",
+										"mark-as-unposted"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "Add Feedback",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "feedback_details",
+											"value": "Very nice jud sha untag mag dugay pani inyohang studio.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/customer/bookings/12/feedback/add",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"bookings",
+										"12",
+										"feedback",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View feedback",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/customer/bookings/12/feedback/view",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"bookings",
+										"12",
+										"feedback",
+										"view"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Get No of Bookings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/report/bookings?booking_year=2025",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"report",
+								"bookings"
+							],
+							"query": [
+								{
+									"key": "booking_year",
+									"value": "2025"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get No of Packages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/report/packages?package_year=&package_month=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"report",
+								"packages"
+							],
+							"query": [
+								{
+									"key": "package_year",
+									"value": ""
+								},
+								{
+									"key": "package_month",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of Booking Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/report/transactions?transaction_start=2025&transaction_end=2026",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"report",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "transaction_start",
+									"value": "2025"
+								},
+								{
+									"key": "transaction_end",
+									"value": "2026"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate PDF Report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/generate-report?booking_year=2025&package_year=2025&package_month=&transaction_start=2025&transaction_end=2026",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"generate-report"
+							],
+							"query": [
+								{
+									"key": "booking_year",
+									"value": "2025"
+								},
+								{
+									"key": "package_year",
+									"value": "2025"
+								},
+								{
+									"key": "package_month",
+									"value": ""
+								},
+								{
+									"key": "transaction_start",
+									"value": "2025"
+								},
+								{
+									"key": "transaction_end",
+									"value": "2026"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"if (pm.request.method.toLowerCase !== 'get') {",
+					"    if(pm.environment.get('XSRF-TOKEN')) {",
+					"        pm.request.headers.add({",
+					"            key: 'x-xsrf-token',",
+					"            value: pm.environment.get('XSRF-TOKEN'),",
+					"        });",
+					"    } else { ",
+					"        let csrfRequestUrl = pm.environment.get('url') + \"/api/sanctum/csrf-cookie\";",
+					"        pm.sendRequest(csrfRequestUrl, function(err, res, {cookies}) {",
+					"            let xsrfCookie = cookies.one('XSRF-TOKEN');",
+					"            if (xsrfCookie) {",
+					"                let xsrfToken = decodeURIComponent(xsrfCookie['value']);",
+					"                pm.request.headers.add({",
+					"                    key: 'x-xsrf-token',",
+					"                    value: xsrfToken,",
+					"                });                ",
+					"                pm.environment.set('XSRF-TOKEN', xsrfToken);",
+					"            }",
+					"        });",
+					"    }",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"if (pm.response.code === 419) {",
+					"    pm.environment.unset(\"XSRF-TOKEN\");",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "XSRF-TOKEN",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
