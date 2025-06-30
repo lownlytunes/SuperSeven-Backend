@@ -71,6 +71,17 @@ class EmployeeAccountController extends BaseController
         }
     }
 
+    public function viewEmployee(int $id)
+    {
+        $user = User::has('employee')->find($id);
+
+        if (!$user) {
+            return $this->sendError('User not found.', 404);
+        }
+
+        return $this->sendResponse('User retrieved successfully.', new UserResource($user));
+    }
+
     public function updateUser(int $id, UpdateAccountRequest $request)
     {
         $request->validated();

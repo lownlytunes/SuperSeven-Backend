@@ -71,6 +71,17 @@ class CustomerAccountController extends BaseController
         }
     }
 
+    public function viewCustomer(int $id)
+    {
+        $customer = User::has('customer')->find($id);
+
+        if (!$customer) {
+            return $this->sendError('User not found.', 404);
+        }
+
+        return $this->sendResponse('Customer retrieved successfully.', new UserResource($customer));
+    }
+
     public function updateUser(int $id, UpdateAccountRequest $request)
     {
         $request->validated();
