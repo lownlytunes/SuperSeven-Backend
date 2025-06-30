@@ -40,14 +40,20 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('/employees')->group(function () {
         Route::get('', [EmployeeAccountController::class, 'getEmployees']);
         Route::post('/add', [EmployeeAccountController::class, 'addUser']);
-        Route::post('/{userId}', [EmployeeAccountController::class, 'updateUser']);
+        Route::prefix('/{userId}')->group(function () {
+            Route::get('/view', [EmployeeAccountController::class, 'viewEmployee']);
+            Route::post('/update', [EmployeeAccountController::class, 'updateUser']);
+        });
     });
 
     //Customers
     Route::prefix('/customers')->group(function () {
         Route::get('', [CustomerAccountController::class, 'getCustomers']);
         Route::post('/add', [CustomerAccountController::class, 'addUser']);
-        Route::post('/{userId}', [CustomerAccountController::class, 'updateUser']);
+        Route::prefix('/{userId}')->group(function () {
+            Route::get('/view', [CustomerAccountController::class, 'viewCustomer']);
+            Route::post('/update', [CustomerAccountController::class, 'updateUser']);
+        });
     });
 
     //Package
