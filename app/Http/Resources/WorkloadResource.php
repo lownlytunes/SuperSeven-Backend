@@ -22,7 +22,7 @@ class WorkloadResource extends JsonResource
             'id' => $this->id,
             'booking_date' => Carbon::parse($this->booking_date)->format('F d, Y'),
             'event_name' => $this->event_name,
-            'customer_name ' => $this->customer->full_name,
+            'customer_name' => $this->customer->full_name,
             'booking_address' => $this->booking_address,
             'expected_completion_date' => Carbon::parse($this->completion_date)->addMonths(3)->format('F d, Y'),
             'completion_date' => Carbon::parse($this->completion_date)->format('F d, Y'),
