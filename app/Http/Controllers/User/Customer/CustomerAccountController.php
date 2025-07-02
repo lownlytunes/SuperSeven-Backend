@@ -27,7 +27,12 @@ class CustomerAccountController extends BaseController
                         $this->filterCallback($subquery, $request, $this->getFilterCustomerData($request->filters));
                     });
                 });
-        });
+        })
+        ->when(!isset($request->filters['inactive']) || $request->filters['inactive'] != true,
+            function ($query) {
+                $query->where('status', User::STATUS_ACTIVE);
+            }
+        );
 
         $paginated = $customer->paginate(self::PER_PAGE);
 
@@ -102,7 +107,7 @@ class CustomerAccountController extends BaseController
                 'email' => $request->email,
                 'contact_num' => $request->contact_no,
                 'address' => $request->address,
-                'status' => $request->status ? 'active' : 'disabled'
+                'status' => $request->status ? User::STATUS_ACTIVE : User::STATUS_INACTIVE,
             ]);
 
             DB::commit();

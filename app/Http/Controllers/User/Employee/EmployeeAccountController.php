@@ -27,7 +27,12 @@ class EmployeeAccountController extends BaseController
                         $this->filterCallback($subquery, $request, $this->getFilterEmployeeData($request->filters));
                     });
                 });
-        });
+        })
+        ->when(!isset($request->filters['inactive']) || $request->filters['inactive'] != true,
+            function ($query) {
+                $query->where('status', User::STATUS_ACTIVE);
+            }
+        );
 
         $paginated = $employees->paginate(self::PER_PAGE);
 
@@ -102,7 +107,7 @@ class EmployeeAccountController extends BaseController
                 'email'=> $request->email,
                 'contact_num'=> $request->contact_no,
                 'address'=> $request->address,
-                'status' => $request->status ? 'active' : 'disabled'
+                'status' => $request->status ? User::STATUS_ACTIVE : User::STATUS_INACTIVE,
             ]);
 
             $user->employee->update([
