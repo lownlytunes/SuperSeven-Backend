@@ -105,6 +105,7 @@ class WorkloadController extends BaseController
                     User::EDITOR_TYPE
                 ]);
             })
+            ->where('status', User::STATUS_ACTIVE)
             ->get();
 
         return $this->sendResponse('Available employees retrieved successfully.', AddEmployeeWorkloadResource::collection($employee));
