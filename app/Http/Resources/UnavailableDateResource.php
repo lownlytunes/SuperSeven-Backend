@@ -17,7 +17,6 @@ class UnavailableDateResource extends JsonResource
         return [
             'id' => $this->id,
             'date' => $this->date,
-            'reason' => $this->reason,
             'created_by' => $this->created_by,
         ];
     }

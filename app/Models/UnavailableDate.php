@@ -13,7 +13,6 @@ class UnavailableDate extends Model
      */
     protected $fillable = [
         'date',
-        'reason',
         'created_by',
     ];
 }

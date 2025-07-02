@@ -29,12 +29,10 @@ class DateController extends BaseController
 
             $request->validate([
                 'date' => "required|date|unique:unavailable_dates,date|after_or_equal:today",
-                'reason' => "nullable|string",
             ]);
 
             $unavailableDate = UnavailableDate::create([
                 'date' => $request->date,
-                'reason' => $request->reason,
                 'created_by' => auth()->user()->first_name,
             ]);
 
