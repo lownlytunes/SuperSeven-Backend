@@ -72,13 +72,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/{id}/delete', [AddonController::class, 'deleteAddon']);
     });
 
-    //Unavailable Dates
-    Route::prefix('/unavailable-dates')->group(function () {
-        Route::get('', [DateController::class, 'getUnavailableDate']);
-        Route::post('/mark', [DateController::class, 'markUnavailableDate']);
-        Route::post('/{id}/unmark', [DateController::class, 'unmarkUnavailableDate']);
-    });
-
     //Bookings
     Route::prefix('/bookings')->group(function () {
         Route::get('/', [BookingController::class, 'getBookings']);
