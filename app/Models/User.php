@@ -27,7 +27,7 @@ class User extends Authenticatable
     public const EDITOR_TYPE = 6;
     public const FREELANCER_TYPE = 7;
     public const STATUS_ACTIVE = 'active';
-    public const STATUS_INACTIVE = 'disabled';
+    public const STATUS_INACTIVE = 'inactive';
 
     public const ROLE_TYPES = [
         self::CLIENT_TYPE => 'Client',
