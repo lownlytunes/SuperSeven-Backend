@@ -16,13 +16,13 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         //Test Owner
-        $this->createTestOwner('admin_owner@test.com');
+        $this->createTestOwner('loniejaydalaygon@gmail.com');
 
         // Test Secretary
-        $this->createTestSecretary('secretary@test.com');
+        $this->createTestSecretary('lunelolaer@gmail.com');
 
         // Test Photographer
-        $this->createTestPhotographer('photographer@test.com');
+        $this->createTestPhotographer('guilmarcapon14@gmail.com');
 
         // Test Editor
         $this->createTestEditor('editor@test.com');
