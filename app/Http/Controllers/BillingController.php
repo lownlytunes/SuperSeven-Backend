@@ -29,7 +29,7 @@ class BillingController extends BaseController
             })
             ->whereYear('booking_date', '>=', $startYear)
             ->whereYear('booking_date', '<=', $endYear)
-            ->where('booking_status', '!=', Booking::STATUS_FOR_RESCHEDULE)
+            ->where('booking_status', '==', Booking::STATUS_APPROVED)
             ->orderBy(Billing::select('billing_status')
                 ->whereColumn('booking_id', 'bookings.id')
                 ->limit(1));
@@ -56,10 +56,12 @@ class BillingController extends BaseController
     public function addPayment(int $billingId, PaymentRequest $request)
     {
         $validated = $request->validated();
-        $billing = Billing::find($billingId);
+        $billing = Billing::where('id', $billingId)
+            ->where('billing_status', '!=', Billing::STATUS_PAID)
+            ->first();
 
         if (!$billing) {
-            return $this->sendError('Billing not found.', 404);
+            return $this->sendError('Billing not found or already paid.', 404);
         }
 
         DB::beginTransaction();

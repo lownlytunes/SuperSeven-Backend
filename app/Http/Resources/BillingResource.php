@@ -26,6 +26,7 @@ class BillingResource extends JsonResource
             'add_on_amount' => $this->billing->add_on_amount,
             'discount' => $this->discount ?? 0,
             'total_amount' => $this->billing->total_amount,
+            'total_amount_paid' => $this->billing->total_amount_paid ?? 0,
             'balance' => $this->billing?->latestPayment->balance ?? $this->billing->total_amount,
             'status' => Billing::STATUS[$this->billing->billing_status],
 
