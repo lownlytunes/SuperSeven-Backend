@@ -30,7 +30,7 @@ class WorkloadResource extends JsonResource
             'completion_date' => Carbon::parse($this->completion_date)->format('F d, Y'),
             'booking_workload_status' => Booking::DELIVERABLE_STATUS[$this->deliverable_status],
             $this->mergeWhen($request->route()->named('workload.detail', 'workload.update'), [
-                'employee_workload_status' => Booking::DELIVERABLE_STATUS[$this->employees()->wherePivot('user_id', $user)->pluck('workload_status')->first()] ?? null
+                'employee_workload_status' => Booking::WORKLOAD_STATUS[$this->employees()->wherePivot('user_id', $user)->pluck('workload_status')->first()] ?? null
             ]),
             'link' => $this->link,
             'assigned_count' => $this->employees->count() ?? 0,
