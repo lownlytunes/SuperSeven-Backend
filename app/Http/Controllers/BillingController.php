@@ -29,7 +29,7 @@ class BillingController extends BaseController
             })
             ->whereYear('booking_date', '>=', $startYear)
             ->whereYear('booking_date', '<=', $endYear)
-            ->where('booking_status', '==', Booking::STATUS_APPROVED)
+            ->where('booking_status', Booking::STATUS_APPROVED)
             ->orderBy(Billing::select('billing_status')
                 ->whereColumn('booking_id', 'bookings.id')
                 ->limit(1));
