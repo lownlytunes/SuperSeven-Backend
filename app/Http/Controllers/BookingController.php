@@ -304,7 +304,7 @@ class BookingController extends BaseController
 
     public function getAvailablePackages()
     {
-        $packages = Package::all('id', 'package_name');
+        $packages = Package::all('id', 'package_name', 'package_details', 'package_price');
 
         return $this->sendResponse('Packages retrieved successfully.', $packages);
     }
