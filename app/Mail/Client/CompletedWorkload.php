@@ -74,7 +74,7 @@ class CompletedWorkload extends Mailable
             'client_name' => $this->clientName,
             'drive_link' => $this->driveLink,
             'link' => [
-                'url' => config('app.frontend_url') . "customer/bookings/{$this->bookingId}",
+                'url' => url(config('app.frontend_url') . "/workload/{$this->bookingId}"),
             ],
         ];
     }

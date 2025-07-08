@@ -88,7 +88,7 @@ class CompletedBooking extends Mailable
             'booking_address' => $this->bookingAddress,
             'status' => Booking::STATUS[$this->status],
             'link' => [
-                'url' => config('app.frontend_url') . "customer/bookings/{$this->bookingId}",
+                'url' => url(config('app.frontend_url') . "/booking"),
             ],
             'receipient' => $this->receipient
         ];

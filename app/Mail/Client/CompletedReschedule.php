@@ -82,7 +82,7 @@ class CompletedReschedule extends Mailable
             'ceremony_time' => Carbon::parse($this->ceremonyTime)->format('h:i A'),
             'status' => Booking::STATUS[$this->status],
             'link' => [
-                'url' => config('app.frontend_url') . "customer/bookings/{$this->bookingId}",
+                'url' => url(config('app.frontend_url') . "/booking"),
             ],
             'receipient' => $this->receipient
         ];
