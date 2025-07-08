@@ -82,7 +82,7 @@ class ReceivedReschedule extends Mailable
             'new_date' => Carbon::parse($this->newDate)->format('F d, Y'),
             'ceremony_time' => Carbon::parse($this->ceremonyTime)->format('h:i A'),
             'link' => [
-                'url' => config('app.frontend_url') . "/bookings/{$this->bookingId}",
+                'url' => url(config('app.frontend_url') . "/booking"),
             ],
             'receipient' => $this->receipient
         ];

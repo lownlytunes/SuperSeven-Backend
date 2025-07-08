@@ -78,7 +78,7 @@ class WorkloadUploaded extends Mailable
             'booking_date' => Carbon::parse($this->bookingDate)->format('F d, Y'),
             'workload_status' => $this->workloadStatus,
             'link' => [
-                'url' => config('app.frontend_url') . "/workload/{$this->bookingId}",
+                'url' => url(config('app.frontend_url') . "/workload/{$this->bookingId}"),
             ],
             'recipient' => $this->recipient,
             'employee_name' => $this->employeeName
