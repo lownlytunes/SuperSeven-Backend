@@ -147,7 +147,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::get('/', [CustomerBookingController::class, 'getBookings']);
             Route::post('/create', [CustomerBookingController::class, 'createBooking']);
             Route::post('/{id}/update', [CustomerBookingController::class, 'updateBooking']);
-            Route::post('/{id}/cancel', [CustomerBookingController::class, 'cancelBooking']);
+            Route::post('/{id}/delete', [CustomerBookingController::class, 'cancelBooking']);
 
             Route::prefix('/{id}')->group(function () {
                 Route::get('/', [CustomerBookingController::class, 'viewBooking']);
