@@ -32,8 +32,10 @@ class BookingResource extends JsonResource
             'discount' => $this->discount,
             'booking_address' => $this->booking_address,
             'booking_status' => Booking::STATUS[$this->booking_status],
+            'deliverable_status' => Booking::DELIVERABLE_STATUS[$this->deliverable_status],
             'package' => $this->package->package_name,
             'add_ons' => AddonResource::collection($this->addOns),
+            'has_feedback' => $this->has_feedback,
             'created_at' => Carbon::parse($this->created_at)->format('d-m-Y'),
         ];
     }

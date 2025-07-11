@@ -118,11 +118,11 @@ class Booking extends Model
     /**
      * Get the feedback associated with the booking.
      *
-     * @return HasMany
+     * @return HasOne
      */
-    public function feedbacks(): HasMany
+    public function feedback(): HasOne
     {
-        return $this->hasMany(Feedback::class);
+        return $this->hasOne(Feedback::class);
     }
 
     /**
@@ -133,5 +133,12 @@ class Booking extends Model
     public function billing(): HasOne
     {
         return $this->hasOne(Billing::class);
+    }
+
+    public function hasFeedback(): Attribute
+    {
+        return Attribute::make(function () {
+            return $this->feedback()->exists();
+        });
     }
 }

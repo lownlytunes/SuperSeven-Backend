@@ -42,7 +42,7 @@ class BookingService
 
     public function createWalkinCustomer(string $firstName, string $lastName, string $address, string $email, string $contactNo)
     {
-        $first_name = ucfirst(str_replace(' ', '', trim($firstName)));
+        $first_name = ucfirst(strtolower(str_replace(' ', '', trim($firstName))));
         $last_name = strtolower(str_replace(' ', '', trim($lastName)));
         $rawPassword = $first_name . $last_name . '12345';
 

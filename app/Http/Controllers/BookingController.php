@@ -92,6 +92,7 @@ class BookingController extends BaseController
                 'booking_address' => $request->booking_address,
                 'completion_date' => $request->completion_date,
                 'booking_status' => Booking::STATUS_PENDING,
+                'deliverable_status' => Booking::STATUS_UNASSIGNED,
                 'discount' => $discount,
             ]);
 
