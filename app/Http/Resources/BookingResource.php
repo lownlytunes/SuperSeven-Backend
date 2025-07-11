@@ -36,6 +36,7 @@ class BookingResource extends JsonResource
             'package' => $this->package->package_name,
             'add_ons' => AddonResource::collection($this->addOns),
             'has_feedback' => $this->has_feedback,
+            'feedback' => $this->feedback ? $this->feedback->feedback_details : null,
             'created_at' => Carbon::parse($this->created_at)->format('d-m-Y'),
         ];
     }
