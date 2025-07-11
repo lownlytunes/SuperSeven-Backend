@@ -82,6 +82,7 @@ class BookingController extends BaseController
                 'event_name' => $validated['event_name'],
                 'booking_address' => $validated['booking_address'],
                 'booking_status' => Booking::STATUS_PENDING,
+                'deliverable_status' => Booking::STATUS_UNASSIGNED,
                 'discount' => $discount
             ]);
 
