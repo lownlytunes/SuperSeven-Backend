@@ -21,6 +21,9 @@ class FeedbackResource extends JsonResource
             'event_name' => $this->booking->event_name,
             'customer_name' => $this->user->full_name,
             'booking_date' => Carbon::parse($this->booking->booking_date)->format('F d, Y'),
+            'ceremony_time' => Carbon::parse($this->booking->ceremony_time)->format('h:i A'),
+            'package_name' => $this->booking->package->package_name ?? null,
+            'add_ons' => AddonResource::collection($this->booking->addOns),
             'feedback_date' => Carbon::parse($this->feedback_date)->format('F d, Y'),
             'feedback_status' => Feedback::STATUSES[$this->feedback_status],
             $this->mergeWhen($request->route()->named('feedback.detail' , 'feedback.view', 'feedback.add'), [
