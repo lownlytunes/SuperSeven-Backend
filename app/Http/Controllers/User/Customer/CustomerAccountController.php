@@ -46,7 +46,7 @@ class CustomerAccountController extends BaseController
         DB::beginTransaction();
         try {
 
-            $firstName = ucfirst(str_replace(' ', '', trim($request->first_name)));
+            $firstName = ucfirst(strtolower(str_replace(' ', '', trim($request->first_name))));
             $lastName = strtolower(str_replace(' ', '', trim($request->last_name)));
             $rawPassword = $firstName . $lastName . '12345';
 
