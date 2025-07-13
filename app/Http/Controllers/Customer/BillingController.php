@@ -28,6 +28,7 @@ class BillingController extends BaseController
         })
         ->whereYear('booking_date', '>=', $startYear)
         ->whereYear('booking_date', '<=', $endYear)
+        ->where('booking_status', '!=', Booking::STATUS_REJECTED)
         ->where('customer_id', $user->id)
         ->orderBy(Billing::select('billing_status')
             ->whereColumn('booking_id', 'bookings.id')
