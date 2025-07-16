@@ -26,10 +26,10 @@ class FeedbackResource extends JsonResource
             'add_ons' => AddonResource::collection($this->booking->addOns),
             'feedback_date' => Carbon::parse($this->feedback_date)->format('F d, Y'),
             'feedback_status' => Feedback::STATUSES[$this->feedback_status],
+            'feedback_detail' => $this->feedback_details,
             $this->mergeWhen($request->route()->named('feedback.detail' , 'feedback.view', 'feedback.add'), [
                 'booking_date_detail' => Carbon::parse($this->booking->booking_date)->format('l, F j, Y'),
                 'booking_address' => $this->booking->booking_address,
-                'feedback_detail' => $this->feedback_details,
             ]),
         ];
     }
