@@ -15,9 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->statefulApi();
         $middleware->append(StartSession::class);
-        $middleware->validateCsrfTokens(except: [
-            'api/*',
-        ]);
+        $middleware->validateCsrfTokens();
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
