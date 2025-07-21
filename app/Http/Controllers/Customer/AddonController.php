@@ -12,7 +12,7 @@ class AddonController extends BaseController
 {
     public function getAddons(Request $request)
     {
-        $addons = AddOn::orderBy('add_on_name', 'asc')->get();
+        $addons = AddOn::where('status', '=', AddOn::STATUS_ACTIVE)->orderBy('add_on_name', 'asc')->get();
 
         return $this->sendResponse('Addons retrieved successfully.', AddonResource::collection($addons));
     }

@@ -313,7 +313,7 @@ class BookingController extends BaseController
 
     public function getAvailableAddons(int $id)
     {
-        $addons = Addon::all();
+        $addons = Addon::where('status', '=', AddOn::STATUS_ACTIVE)->get();
 
         return $this->sendResponse('Addons retrieved successfully.', BookingAddOnsResource::collection($addons));
     }

@@ -21,7 +21,7 @@ class AddonController extends BaseController
                 $this->searchCallback($query, $request, ['add_on_name', 'add_on_price']);
             });
         })
-        ->where('status', AddOn::STATUS_ACTIVE);
+        ->where('status', '=', AddOn::STATUS_ACTIVE);
 
         $paginated = $addon->paginate(self::PER_PAGE);
 
