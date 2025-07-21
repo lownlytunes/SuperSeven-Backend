@@ -10,6 +10,9 @@ class AddOn extends Model
 {
     use HasFactory;
 
+    public const STATUS_INACTIVE = 0;
+    public const STATUS_ACTIVE = 1;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +22,7 @@ class AddOn extends Model
         'add_on_name',
         'add_on_details',
         'add_on_price',
+        'status'
     ];
 
     /**

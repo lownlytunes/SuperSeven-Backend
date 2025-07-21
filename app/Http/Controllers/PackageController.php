@@ -20,7 +20,8 @@ class PackageController extends BaseController
             $query->where(function ($query) use ($request) {
                 $this->searchCallback($query, $request, ['package_name', 'package_price']);
             });
-        });
+        })
+        ->where('status', Package::STATUS_ACTIVE);
 
         $paginated = $packages->paginate(self::PER_PAGE);
 
@@ -75,16 +76,20 @@ class PackageController extends BaseController
         }
     }
 
-    public function deletePackage(int $id)
+    public function setPackageInactive(int $id)
     {
         $package = Package::find($id);
+
         if (!$package) {
             return $this->sendError('Package not found.', 404);
         }
 
         DB::beginTransaction();
         try{
-            $package->delete();
+
+            $package->status = Package::STATUS_INACTIVE;
+
+            $package->save();
             DB::commit();
             return $this->sendResponse('Package deleted successfully.');
         } catch (Exception $exception) {
