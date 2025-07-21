@@ -42,7 +42,7 @@ class ReportService
                     $query->whereMonth('booking_date', $month);
                 }
             }
-        ])->get();
+        ])->where('status', '=', Package::STATUS_ACTIVE)->get();
 
         return $packages->map(function ($package) {
             return [

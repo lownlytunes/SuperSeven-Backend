@@ -21,7 +21,7 @@ class PackageController extends BaseController
                 $this->searchCallback($query, $request, ['package_name', 'package_price']);
             });
         })
-        ->where('status', Package::STATUS_ACTIVE);
+        ->where('status', '=', Package::STATUS_ACTIVE);
 
         $paginated = $packages->paginate(self::PER_PAGE);
 
