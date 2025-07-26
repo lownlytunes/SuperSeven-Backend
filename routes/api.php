@@ -8,6 +8,7 @@ use App\Http\Controllers\Customer\AddonController as CustomerAddonController;
 use App\Http\Controllers\Customer\BookingController as CustomerBookingController;
 use App\Http\Controllers\Customer\PackageController as CustomerPackageController;
 use App\Http\Controllers\Customer\BillingController as CustomerBillingController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DateController;
 use App\Http\Controllers\Employee\WorkloadController as EmployeeWorkloadController;
 use App\Http\Controllers\FeedbackController;
@@ -27,6 +28,13 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
+
+    //Dashboard
+    Route::prefix('/dashboard')->group(function () {
+        Route::get('/packages', [DashboardController::class, 'fetchPackages']);
+        Route::get('/feedbacks', [DashboardController::class, 'fetchFeedbacks']);
+    });
+
     Route::prefix('/users')->group(function () {
         //Authenticated
         Route::get('/current', [AuthController::class, 'user']);
