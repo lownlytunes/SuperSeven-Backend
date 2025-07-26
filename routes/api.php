@@ -61,7 +61,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('', [PackageController::class, 'getPackages']);
         Route::post('/add', [PackageController::class, 'addPackage']);
         Route::post('/{id}', [PackageController::class, 'updatePackage']);
-        Route::post('/{id}/delete', [PackageController::class, 'deletePackage']);
+        Route::post('/{id}/inactive', [PackageController::class, 'setPackageInactive']);
     });
 
     //Addon
@@ -69,7 +69,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('', [AddonController::class, 'getAddons']);
         Route::post('/add', [AddonController::class, 'addAddon']);
         Route::post('/{id}', [AddonController::class, 'updateAddon']);
-        Route::post('/{id}/delete', [AddonController::class, 'deleteAddon']);
+        Route::post('/{id}/inactive', [AddonController::class, 'setAddonInactive']);
     });
 
     //Unavailable Dates

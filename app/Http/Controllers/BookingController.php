@@ -305,14 +305,15 @@ class BookingController extends BaseController
 
     public function getAvailablePackages()
     {
-        $packages = Package::all('id', 'package_name', 'package_details', 'package_price');
+        $packages = Package::where('status', '=', Package::STATUS_ACTIVE)
+            ->get(['id', 'package_name', 'package_details', 'package_price']);
 
         return $this->sendResponse('Packages retrieved successfully.', $packages);
     }
 
     public function getAvailableAddons(int $id)
     {
-        $addons = Addon::all();
+        $addons = Addon::where('status', '=', AddOn::STATUS_ACTIVE)->get();
 
         return $this->sendResponse('Addons retrieved successfully.', BookingAddOnsResource::collection($addons));
     }

@@ -12,7 +12,7 @@ class PackageController extends BaseController
 {
     public function getPackages(Request $request)
     {
-        $packages = Package::orderBy('package_name', 'asc')->get();
+        $packages = Package::where('status', '=', Package::STATUS_ACTIVE)->orderBy('package_name', 'asc')->get();
 
         return $this->sendResponse('Packages retrieved successfully.', PackageResource::collection($packages));
     }

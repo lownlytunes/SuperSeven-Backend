@@ -10,6 +10,9 @@ class Package extends Model
 {
     use HasFactory;
 
+    public const STATUS_INACTIVE = 0;
+    public const STATUS_ACTIVE = 1;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +22,7 @@ class Package extends Model
         'package_name',
         'package_details',
         'package_price',
+        'status'
     ];
 
     /**

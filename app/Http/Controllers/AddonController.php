@@ -20,7 +20,8 @@ class AddonController extends BaseController
             $query->where(function ($query) use ($request) {
                 $this->searchCallback($query, $request, ['add_on_name', 'add_on_price']);
             });
-        });
+        })
+        ->where('status', '=', AddOn::STATUS_ACTIVE);
 
         $paginated = $addon->paginate(self::PER_PAGE);
 
@@ -75,7 +76,7 @@ class AddonController extends BaseController
         }
     }
 
-    public function deleteAddon(int $id)
+    public function setAddonInactive(int $id)
     {
         $addon = Addon::find($id);
 
@@ -86,7 +87,9 @@ class AddonController extends BaseController
         DB::beginTransaction();
         try {
 
-            $addon->delete();
+            $addon->status = AddOn::STATUS_INACTIVE;
+            $addon->save();
+
             DB::commit();
             return $this->sendResponse('Addon deleted successfully.');
         } catch (Exception $exception) {
