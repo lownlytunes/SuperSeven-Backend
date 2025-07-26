@@ -27,6 +27,8 @@ class UpdatePackageRequest extends FormRequest
             'package_name' => 'nullable|string|max:30',
             'package_details' => 'nullable|string|max:150',
             'package_price' => 'nullable|numeric|min:0|max:999999.99',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg',
+            'remove_image' => 'nullable',
         ];
     }
 
@@ -41,6 +43,8 @@ class UpdatePackageRequest extends FormRequest
             'package_price.numeric' => 'Package price must be a number.',
             'package_price.min' => 'Package price must be at least 0.',
             'package_price.max' => 'Package price must not exceed 999999.99.',
+            'image.image' => 'Package image must be an image file.',
+            'image.mimes' => 'Package image must be a file of type: jpeg',
         ];
     }
 
