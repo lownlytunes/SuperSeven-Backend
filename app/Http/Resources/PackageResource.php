@@ -19,6 +19,9 @@ class PackageResource extends JsonResource
             'package_name' => $this->package_name,
             'package_details' => $this->package_details,
             'package_price' => $this->package_price,
+            'image_name' => $this->image_name,
+            'image_path' => $this->image_path,
+            'status' => $this->status,
         ];
     }
 }
