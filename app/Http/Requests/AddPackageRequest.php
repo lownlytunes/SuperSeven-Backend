@@ -25,7 +25,7 @@ class AddPackageRequest extends FormRequest
     {
         return [
             'package_name' => 'required|string|max:30',
-            'package_details' => 'required|string|max:150',
+            'package_details' => 'required|string',
             'package_price' => 'required|numeric|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg',
         ];
@@ -39,7 +39,6 @@ class AddPackageRequest extends FormRequest
             'package_name.max' => 'Package name must not exceed 3 characters.',
             'package_details.required' => 'Package details are required.',
             'package_details.string' => 'Package details must be a string.',
-            'package_details.max' => 'Package details must not exceed 150 characters.',
             'package_price.required' => 'Package price is required.',
             'package_price.numeric' => 'Package price must be a number.',
             'package_price.min' => 'Package price must be at least 0.',
