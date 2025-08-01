@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('unavailable_dates', function (Blueprint $table) {
-            $table->dropColumn('reason');
+           if (Schema::hasColumn('unavailable_dates', 'reason')) {
+                $table->dropColumn('reason');
+            }
         });
     }
 
