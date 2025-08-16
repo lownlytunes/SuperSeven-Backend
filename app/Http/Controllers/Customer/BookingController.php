@@ -175,10 +175,11 @@ class BookingController extends BaseController
 
         $booking = Booking::where('id', $bookingId)
             ->where('customer_id', $user->id)
+            ->where('booking_status', '!=', Booking::STATUS_APPROVED)
             ->first();
 
         if (!$booking) {
-            return $this->sendError('Booking not found.', 404);
+            return $this->sendError('Booking not found or already approved.', 404);
         }
 
         DB::beginTransaction();

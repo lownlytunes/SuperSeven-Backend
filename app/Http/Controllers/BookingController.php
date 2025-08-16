@@ -187,10 +187,12 @@ class BookingController extends BaseController
 
     public function cancelBooking(int $bookingId)
     {
-        $booking = Booking::where('id', $bookingId)->first();
+        $booking = Booking::where('id', $bookingId)
+            ->where('booking_status', '!=', Booking::STATUS_APPROVED)
+            ->first();
 
         if (!$booking) {
-            return $this->sendError('Booking not found.', 404);
+            return $this->sendError('Booking not found or already approved.', 404);
         }
 
         DB::beginTransaction();
