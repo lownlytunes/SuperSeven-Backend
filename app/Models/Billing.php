@@ -34,6 +34,7 @@ class Billing extends Model
         'package_amount',
         'add_on_amount',
         'total_amount',
+        'balance',
         'billing_status',
     ];
 

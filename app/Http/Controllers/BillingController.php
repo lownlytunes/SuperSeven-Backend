@@ -87,7 +87,7 @@ class BillingController extends BaseController
 
             // Update billing status
             $newStatus = $this->calculateBillingStatus($totalAmount, $paidAmount + $currentPayment);
-            $billing->update(['billing_status' => $newStatus]);
+            $billing->update(['balance' => $newBalance, 'billing_status' => $newStatus]);
 
             // Handle booking status updates
             if ($isFirstPayment) {

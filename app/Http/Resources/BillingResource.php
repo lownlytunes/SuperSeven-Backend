@@ -28,7 +28,8 @@ class BillingResource extends JsonResource
             'discounted_amount' => $this->billing->total_discounted ?? 0,
             'total_amount' => $this->billing->total_amount,
             'total_amount_paid' => $this->billing->total_amount_paid ?? 0,
-            'balance' => $this->billing?->latestPayment->balance ?? $this->billing->total_amount,
+            // 'balance' => $this->billing?->latestPayment->balance ?? $this->billing->total_amount,
+            'balance' => $this->billing->balance,
             'status' => Billing::STATUS[$this->billing->billing_status],
 
             $this->mergeWhen($request->route()->named('billing.view'), [
