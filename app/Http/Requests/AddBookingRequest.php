@@ -38,6 +38,7 @@ class AddBookingRequest extends FormRequest
             'package_id' => 'required|integer',
             'event_name' => 'required|string|max:100',
             'booking_address' => 'required|string|max:100',
+            'category' => 'required|integer',
             'deliverable_status' => 'nullable|integer',
             'completion_date' => 'nullable|date',
         ];
@@ -67,6 +68,8 @@ class AddBookingRequest extends FormRequest
             'event_name.required' => 'The event name is required.',
             'event_name.max' => 'The event name must not exceed 100 characters.',
             'booking_address.required' => 'The booking address is required.',
+            'category.required' => 'The category is required.',
+            'category.integer' => 'The category must be an integer.',
             'deliverable_status.integer' => 'The deliverable status must be an integer.',
             'completion_date.date' => 'The completion date must be a valid date.',
         ];

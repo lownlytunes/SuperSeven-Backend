@@ -90,6 +90,7 @@ class BookingController extends BaseController
                 'package_id' => $request->package_id,
                 'event_name' => $request->event_name,
                 'booking_address' => $request->booking_address,
+                'category' => $request->category,
                 'completion_date' => $request->completion_date,
                 'booking_status' => Booking::STATUS_PENDING,
                 'deliverable_status' => Booking::STATUS_UNASSIGNED,
@@ -146,6 +147,7 @@ class BookingController extends BaseController
                 'ceremony_time' => $request->ceremony_time,
                 'event_name' => $request->event_name,
                 'booking_address' => $request->booking_address,
+                'category' => $request->category,
             ]);
 
             // Check for discount changes

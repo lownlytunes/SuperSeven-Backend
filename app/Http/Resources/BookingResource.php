@@ -18,6 +18,7 @@ class BookingResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'billing_id' => $this->billing ? $this->billing->id : null,
             'booking_date' => [
                 'iso' => Carbon::parse($this->booking_date)->toISOString(),
                 'formatted' => Carbon::parse($this->booking_date)->format('F d, Y (l)'),
@@ -31,6 +32,7 @@ class BookingResource extends JsonResource
             'customer_name' => $this->customer->full_name,
             'discount' => $this->discount,
             'booking_address' => $this->booking_address,
+            'category' => Booking::EVENT_CATEGORIES[$this->category],
             'booking_status' => Booking::STATUS[$this->booking_status],
             'deliverable_status' => Booking::DELIVERABLE_STATUS[$this->deliverable_status],
             'package' => $this->package->package_name,

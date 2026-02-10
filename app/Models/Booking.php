@@ -44,6 +44,20 @@ class Booking extends Model
         self::STATUS_FOR_RELEASE => 'For Release',
         self::STATUS_COMPLETED => 'Completed',
     ];
+    
+    public const CATEGORY_OTHERS = 0;
+    public const CATEGORY_BIRTHDAY = 1;
+    public const CATEGORY_PRENUP = 2;
+    public const CATEGORY_DEBUT = 3;
+    public const CATEGORY_WEDDING = 4;
+
+    public const EVENT_CATEGORIES = [
+        self::CATEGORY_OTHERS => 'Others',
+        self::CATEGORY_BIRTHDAY => 'Birthday',
+        self::CATEGORY_PRENUP => 'Prenup',
+        self::CATEGORY_DEBUT => 'Debut',
+        self::CATEGORY_WEDDING => 'Wedding',
+    ];
 
     public const WORKLOAD_STATUS = [
         self::STATUS_PENDING => 'Pending',
