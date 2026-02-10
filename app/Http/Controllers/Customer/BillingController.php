@@ -3,16 +3,22 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\BaseController;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\PaginateRequest;
 use App\Http\Resources\BillingResource;
 use App\Http\Resources\Collections\BillingCollection;
 use App\Models\Billing;
 use App\Models\Booking;
-use Illuminate\Http\Request;
+use App\Services\BillingService;
 
 class BillingController extends BaseController
 {
+    private BillingService $billingService;
+
+    public function __construct(BillingService $billingService)
+    {
+        $this->billingService = $billingService;
+    }
+
     public function getBillings(PaginateRequest $request)
     {
         $user = auth()->user();
@@ -25,6 +31,11 @@ class BillingController extends BaseController
             $query->where(function ($query) use ($request) {
                 $this->searchCallback($query, $request, ['event_name', 'customer.first_name', 'customer.last_name', 'package.package_name']);
             });
+        })
+        ->when(isset($request->filters), function ($query) use ($request) {
+                $query->where(function ($subquery) use ($request) {
+                    $this->filterCallback($subquery, $request, $this->billingService->getFilterBillingData());
+                });
         })
         ->whereYear('booking_date', '>=', $startYear)
         ->whereYear('booking_date', '<=', $endYear)
