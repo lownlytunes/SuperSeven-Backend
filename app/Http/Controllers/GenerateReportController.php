@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GenerateReportRequest;
 use App\Services\ReportService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Spatie\Browsershot\Browsershot;
 use Illuminate\Support\Str;
@@ -25,7 +26,9 @@ class GenerateReportController extends BaseController
         // fetch data for report
         $monthlyData = $this->fetchNoOfBookings($request);
         $packageData = $this->fetchNoOfPackages($request);
+        $addOnData = $this->fetchNoOfAddOnsPerMonth($request);
         $bookings = $this->fetchBookingTransactions($request);
+
 
         // generate pdf
         $fileName = $this->generateFileName();
@@ -33,14 +36,14 @@ class GenerateReportController extends BaseController
 
         // render template with data
         $template = view('generate.report', [
-            'booking_year' => $request->input('booking_year', now()->year),
-            'package_year' => $request->input('package_year'),
-            'package_month' => $request->input('package_month'),
-            'transaction_start' => $request->input('transaction_start'),
-            'transaction_end' => $request->input('transaction_end'),
+            'start_month_year' => Carbon::createFromFormat('Y-m', $request->input('start_month_year'))->format('F Y'),
+            'end_month_year' => Carbon::createFromFormat('Y-m', $request->input('end_month_year'))->format('F Y'),
+            'billing_start' => $request->input('billing_start'),
+            'billing_end' => $request->input('billing_end'),
             'monthlyData' => $monthlyData,
-            'packageData' => $packageData,
-            'bookings' => $bookings
+            'packagesChart' => $packageData,
+            'addonsChart' => $addOnData,
+            'bookings' => $bookings,
         ])->render();
 
         // generate pdf using browsershot
@@ -55,22 +58,35 @@ class GenerateReportController extends BaseController
     }
 
     private function fetchNoOfBookings(GenerateReportRequest $request)
-    { 
-        $year = $request->input('booking_year', now()->year);
+    {
+        // Expect month-year format like '2024-01' for January 2024
+        $startMonthYear = $request->input('start_month_year', now()->startOfYear()->format('Y-m'));
+        $endMonthYear = $request->input('end_month_year', now()->endOfYear()->format('Y-m'));
 
-        $monthlyData = $this->reportService->generateNoOfBookings($year);
+        $monthlyData = $this->reportService->generateNoOfBookings($startMonthYear, $endMonthYear);
 
         return $monthlyData;
     }
 
     private function fetchNoOfPackages(GenerateReportRequest $request)
     {
-        $year = $request->input('package_year', now()->year);
-        $month = $request->input('package_month');
+        // Use month-year format
+        $startMonthYear = $request->input('start_month_year', now()->startOfYear()->format('Y-m'));
+        $endMonthYear = $request->input('end_month_year', now()->endOfYear()->format('Y-m'));
 
-        $result = $this->reportService->generateNoOfPackages($year, $month);
+        $result = $this->reportService->generatePackageTotals($startMonthYear, $endMonthYear);
 
         return $result;
+    }
+
+    private function fetchNoOfAddOnsPerMonth(GenerateReportRequest $request)
+    {
+        $startMonthYear = $request->input('start_month_year', now()->startOfYear()->format('Y-m'));
+        $endMonthYear   = $request->input('end_month_year', now()->endOfYear()->format('Y-m'));
+
+        $addOnData = $this->reportService->generateAddOnTotals($startMonthYear, $endMonthYear);
+
+        return $addOnData;
     }
 
     private function fetchBookingTransactions(GenerateReportRequest $request)

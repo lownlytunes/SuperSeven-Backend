@@ -22,7 +22,7 @@ class AddOn extends Model
         'add_on_name',
         'add_on_details',
         'add_on_price',
-        'status'
+        'status',
     ];
 
     /**
@@ -32,6 +32,6 @@ class AddOn extends Model
     */
     public function bookings(): BelongsToMany
     {
-        return $this->belongsToMany(Booking::class, 'availed_package')->using(AvailedAddon::class);
+        return $this->belongsToMany(Booking::class, 'availed_addon')->using(AvailedAddon::class);
     }
 }

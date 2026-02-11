@@ -48,6 +48,26 @@ class GenerateReportRequest extends FormRequest
                 'integer',
                 'min:2023',
             ],
+            'billing_start' => [
+                'nullable',
+                'integer',
+                'min:2023',
+            ],
+            'billing_end' => [
+                'nullable',
+                'integer',
+                'min:2023',
+            ],
+
+            //New filter start and end
+            'start_month_year' => [
+                'nullable',
+                'date_format:Y-m',
+            ],
+            'end_month_year' => [
+                'nullable',
+                'date_format:Y-m',
+            ],
         ];
     }
 }

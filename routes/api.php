@@ -132,7 +132,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('/report')->group(function () {
         Route::get('/bookings', [ReportController::class, 'getNoOfBookings']);
         Route::get('/packages', [ReportController::class, 'getNoOfPackages']);
+        Route::get('/addons', [ReportController::class, 'getNoOfAddOns']);
         Route::get('/transactions', [ReportController::class, 'getTransactions']);
+        Route::get('/billings', [ReportController::class, 'getBillingInformation']);
     });
 
     Route::get('/generate-report', [GenerateReportController::class, 'generatePdf']);
@@ -155,7 +157,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::get('/', [CustomerBookingController::class, 'getBookings']);
             Route::post('/create', [CustomerBookingController::class, 'createBooking']);
             Route::post('/{id}/update', [CustomerBookingController::class, 'updateBooking']);
-            Route::post('/{id}/delete', [CustomerBookingController::class, 'cancelBooking']);
+            Route::post('/{id}/delete', [CustomerBookingController::class, 'deleteBooking']);
 
             Route::prefix('/{id}')->group(function () {
                 Route::get('/', [CustomerBookingController::class, 'viewBooking']);

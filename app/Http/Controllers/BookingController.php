@@ -147,7 +147,7 @@ class BookingController extends BaseController
                 'ceremony_time' => $request->ceremony_time,
                 'event_name' => $request->event_name,
                 'booking_address' => $request->booking_address,
-                'category' => $request->category,
+                'category' => $request->category ?? $booking->category,
             ]);
 
             // Check for discount changes
@@ -189,12 +189,10 @@ class BookingController extends BaseController
 
     public function cancelBooking(int $bookingId)
     {
-        $booking = Booking::where('id', $bookingId)
-            ->where('booking_status', '!=', Booking::STATUS_APPROVED)
-            ->first();
+        $booking = Booking::where('id', $bookingId)->first();
 
         if (!$booking) {
-            return $this->sendError('Booking not found or already approved.', 404);
+            return $this->sendError('Booking not found.', 404);
         }
 
         DB::beginTransaction();
