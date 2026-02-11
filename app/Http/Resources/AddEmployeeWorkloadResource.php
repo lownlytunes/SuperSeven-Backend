@@ -21,11 +21,8 @@ class AddEmployeeWorkloadResource extends JsonResource
         return [
             'id' => $this->id,
             'full_name' => $this->full_name,
-            'user_role' => $this->customer
-                ? User::ROLE_TYPES[$this->customer->customer_type]
-                : ($this->employee
-                    ? User::ROLE_TYPES[$this->employee->employee_type]
-                    : null),
+            'user_role' => $this->employee ? User::ROLE_TYPES[$this->employee->employee_type]: null,
+            'workload_count' => $this->workloadCount ?? 0,
             'selected' => $booking->employees()->wherePivot('user_id', $this->id)->exists(),
         ];
     }
