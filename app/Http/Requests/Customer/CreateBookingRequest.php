@@ -33,6 +33,7 @@ class CreateBookingRequest extends FormRequest
             'event_name' => 'required|string|max:100',
             'package_id' => 'required|integer',
             'booking_address' => 'required|string|max:100',
+            'category' => 'required|integer',
         ];
     }
 
@@ -48,6 +49,8 @@ class CreateBookingRequest extends FormRequest
             'package_id.required' => 'The package ID is required.',
             'booking_address.required' => 'The booking address is required.',
             'booking_address.max' => 'The booking address must not exceed 100 characters.',
+            'category.required' => 'The category is required.',
+            'category.integer' => 'The category must be an integer.',
         ];
     }
 

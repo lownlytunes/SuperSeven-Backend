@@ -149,4 +149,16 @@ class User extends Authenticatable
             return $attributes['first_name'] . ' ' . $attributes['mid_name'] . ' ' . $attributes['last_name'];
         });
     }
+
+    /**
+     * Get the user's workload count.
+     *
+     * @return Attribute
+     */
+    public function workloadCount(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->workloads()->count()
+        );
+    }
 }

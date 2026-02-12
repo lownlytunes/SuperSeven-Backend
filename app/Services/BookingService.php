@@ -81,6 +81,7 @@ class BookingService
             'package_amount' => $package->package_price,
             'add_on_amount' => $addOnAmount,
             'total_amount' => $totalAmount,
+            'balance' => $totalAmount
         ]);
     }
 
@@ -94,13 +95,15 @@ class BookingService
         $addOnAmount = AddOn::whereIn('id', $addOnIds)->sum('add_on_price');
         $baseTotal = $package->package_price + $addOnAmount;
         $discountAmount = $discount ? ($baseTotal * ($discount / 100)) : 0;
+        $totalAmount = $baseTotal - $discountAmount;
 
         Billing::updateOrCreate(
             ['booking_id' => $bookingId],
             [
                 'package_amount' => $package->package_price,
                 'add_on_amount' => $addOnAmount,
-                'total_amount' => $baseTotal - $discountAmount,
+                'total_amount' => $totalAmount,
+                'balance' => $totalAmount
             ]
         );
     }

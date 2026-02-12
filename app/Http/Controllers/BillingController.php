@@ -10,12 +10,19 @@ use App\Http\Resources\TransactionResource;
 use App\Models\Billing;
 use App\Models\Booking;
 use App\Models\Payment;
+use App\Services\BillingService;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class BillingController extends BaseController
 {
+    private BillingService $billingService;
+
+    public function __construct(BillingService $billingService)
+    {
+        $this->billingService = $billingService;
+    }
+
     public function getBillings(PaginateRequest $request)
     {
         $startYear = $request->start_year;
@@ -27,12 +34,18 @@ class BillingController extends BaseController
                     $this->searchCallback($query, $request, ['event_name', 'customer.first_name', 'customer.last_name', 'package.package_name']);
                 });
             })
+            ->when(isset($request->filters), function ($query) use ($request) {
+                $query->where(function ($subquery) use ($request) {
+                    $this->filterCallback($subquery, $request, $this->billingService->getFilterBillingData());
+                });
+            })
             ->whereYear('booking_date', '>=', $startYear)
             ->whereYear('booking_date', '<=', $endYear)
             ->where('booking_status', '!=', Booking::STATUS_REJECTED)
             ->orderBy(Billing::select('billing_status')
                 ->whereColumn('booking_id', 'bookings.id')
-                ->limit(1));
+                ->limit(1))
+            ->orderBy('booking_date', 'asc');
 
         $paginated = $billings->paginate(self::PER_PAGE);
 
@@ -87,7 +100,7 @@ class BillingController extends BaseController
 
             // Update billing status
             $newStatus = $this->calculateBillingStatus($totalAmount, $paidAmount + $currentPayment);
-            $billing->update(['billing_status' => $newStatus]);
+            $billing->update(['balance' => $newBalance, 'billing_status' => $newStatus]);
 
             // Handle booking status updates
             if ($isFirstPayment) {

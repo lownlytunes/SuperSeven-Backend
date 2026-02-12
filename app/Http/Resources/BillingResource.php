@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use App\Models\Billing;
+use App\Models\Booking;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,16 +21,19 @@ class BillingResource extends JsonResource
             'id' => $this->billing->id,
             'booking_id' => $this->id,
             'event_name' => $this->event_name,
+            'event_date' => Carbon::parse($this->booking_date)->format('Y-m-d'),
             'customer_name' => $this->customer->full_name,
             'package' => $this->package->package_name,
             'add_ons' => AddonResource::collection($this->addOns),
+            'category' => Booking::EVENT_CATEGORIES[$this->category],
             'package_amount' => $this->billing->package_amount,
             'add_on_amount' => $this->billing->add_on_amount,
             'discount' => $this->discount ?? 0,
             'discounted_amount' => $this->billing->total_discounted ?? 0,
             'total_amount' => $this->billing->total_amount,
             'total_amount_paid' => $this->billing->total_amount_paid ?? 0,
-            'balance' => $this->billing?->latestPayment->balance ?? $this->billing->total_amount,
+            // 'balance' => $this->billing?->latestPayment->balance ?? $this->billing->total_amount,
+            'balance' => $this->billing->balance,
             'status' => Billing::STATUS[$this->billing->billing_status],
 
             $this->mergeWhen($request->route()->named('billing.view'), [

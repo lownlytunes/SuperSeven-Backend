@@ -51,6 +51,19 @@ class Booking extends Model
         self::STATUS_EDITING => 'Editing',
         self::STATUS_FOR_RELEASE => 'For Release',
     ];
+    public const CATEGORY_OTHERS = 0;
+    public const CATEGORY_BIRTHDAY = 1;
+    public const CATEGORY_PRENUP = 2;
+    public const CATEGORY_DEBUT = 3;
+    public const CATEGORY_WEDDING = 4;
+
+    public const EVENT_CATEGORIES = [
+        self::CATEGORY_OTHERS => 'Others',
+        self::CATEGORY_BIRTHDAY => 'Birthday',
+        self::CATEGORY_PRENUP => 'Prenup',
+        self::CATEGORY_DEBUT => 'Debut',
+        self::CATEGORY_WEDDING => 'Wedding',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -64,6 +77,7 @@ class Booking extends Model
         'ceremony_time',
         'event_name',
         'booking_address',
+        'category',
         'booking_status',
         'deliverable_status',
         'completion_date',
@@ -139,6 +153,34 @@ class Booking extends Model
     {
         return Attribute::make(function () {
             return $this->feedback()->exists();
+        });
+    }
+
+    public function hasFullPayment(): Attribute
+    {
+        return Attribute::make(function () {
+            return $this->billing && $this->billing->billing_status === Billing::STATUS_PAID;
+        });
+    }
+
+    public function bookedStatus(): Attribute
+    {
+        return Attribute::make(function () {
+            return self::STATUS[$this->booking_status] ?? '';
+        });
+    }
+
+    public function workloadStatus(): Attribute
+    {
+        return Attribute::make(function () {
+            return self::DELIVERABLE_STATUS[$this->deliverable_status] ?? '';
+        });
+    }
+
+    public function eventCategory(): Attribute
+    {
+        return Attribute::make(function () {
+            return self::EVENT_CATEGORIES[$this->category] ?? '';
         });
     }
 }

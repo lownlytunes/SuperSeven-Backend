@@ -29,6 +29,7 @@ class UpdateBookingRequest extends FormRequest
             'event_name' => 'nullable|string|max:100',
             'package_id' => 'nullable|integer',
             'booking_address' => 'nullable|string|max:100',
+            'category' => 'nullable|integer',
         ];
     }
 
@@ -41,6 +42,7 @@ class UpdateBookingRequest extends FormRequest
             'event_name.string' => 'The event name must be a string.',
             'event_name.max' => 'The event name must not exceed 100 characters.',
             'booking_address.max' => 'The booking address must not exceed 100 characters.',
+            'category.integer' => 'The category must be an integer.',
         ];
     }
 

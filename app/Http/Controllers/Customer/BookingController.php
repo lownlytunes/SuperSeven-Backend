@@ -81,6 +81,7 @@ class BookingController extends BaseController
                 'package_id' => $validated['package_id'],
                 'event_name' => $validated['event_name'],
                 'booking_address' => $validated['booking_address'],
+                'category' => $validated['category'],
                 'booking_status' => Booking::STATUS_PENDING,
                 'deliverable_status' => Booking::STATUS_UNASSIGNED,
                 'discount' => $discount
@@ -130,6 +131,7 @@ class BookingController extends BaseController
             $booking->ceremony_time = $validated['ceremony_time'];
             $booking->event_name = $validated['event_name'];
             $booking->booking_address = $validated['booking_address'];
+            $booking->category = $validated['category'];
             $booking->package_id = $validated['package_id'];
 
             $shouldUpdateBilling = false;

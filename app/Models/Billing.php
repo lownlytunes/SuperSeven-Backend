@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -34,6 +34,7 @@ class Billing extends Model
         'package_amount',
         'add_on_amount',
         'total_amount',
+        'balance',
         'billing_status',
     ];
 
@@ -65,14 +66,21 @@ class Billing extends Model
     public function totalAmountPaid(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->payments()->sum('amount_paid')
+            get: fn () => $this->payments()->sum('amount_paid')
         );
     }
 
     public function totalDiscounted(): Attribute
     {
         return Attribute::make(
-            get: fn() => ($this->package_amount + $this->add_on_amount) - $this->total_amount
+            get: fn () => ($this->package_amount + $this->add_on_amount) - $this->total_amount
+        );
+    }
+
+    public function statusLabel(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => self::STATUS[$this->billing_status] ?? ''
         );
     }
 }

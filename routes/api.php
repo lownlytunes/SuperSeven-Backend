@@ -132,7 +132,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('/report')->group(function () {
         Route::get('/bookings', [ReportController::class, 'getNoOfBookings']);
         Route::get('/packages', [ReportController::class, 'getNoOfPackages']);
+        Route::get('/addons', [ReportController::class, 'getNoOfAddOns']);
         Route::get('/transactions', [ReportController::class, 'getTransactions']);
+        Route::get('/billings', [ReportController::class, 'getBillingInformation']);
     });
 
     Route::get('/generate-report', [GenerateReportController::class, 'generatePdf']);
