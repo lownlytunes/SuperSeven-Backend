@@ -19,6 +19,7 @@ class ReportBillingResource extends JsonResource
             'id' => $this->id,
             'booking_date' => Carbon::parse($this->booking_date)->format('F d, Y'),
             'event_name' => $this->event_name,
+            'client_name' => $this->customer->full_name,
             'billing_status' => $this->billing->status_label,
             'total_amount' => $this->billing->total_amount,
             'balance_due' => $this->billing->balance,

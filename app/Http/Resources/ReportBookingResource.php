@@ -19,7 +19,7 @@ class ReportBookingResource extends JsonResource
             'id' => $this->id,
             'booking_date' => Carbon::parse($this->booking_date)->format('F d, Y'),
             'event_name' => $this->event_name,
-            'customer_name' => $this->customer->full_name,
+            'client_name' => $this->customer->full_name,
             'package' => $this->package->package_name,
             'category' => $this->event_category,
         ];
