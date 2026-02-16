@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,6 +15,13 @@ class ReportBillingResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'booking_date' => Carbon::parse($this->booking_date)->format('F d, Y'),
+            'event_name' => $this->event_name,
+            'billing_status' => $this->billing->status_label,
+            'total_amount' => $this->billing->total_amount,
+            'balance_due' => $this->billing->balance,
+        ];
     }
 }

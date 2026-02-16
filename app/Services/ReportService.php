@@ -150,13 +150,17 @@ class ReportService
         ];
     }
 
-    public function getTransactions(string $startYear, string $endYear)
+    public function getTransactions(?string $startMonthYear, ?string $endMonthYear)
     {
+        $start = Carbon::createFromFormat('Y-m', $startMonthYear ?? now()->startOfYear()->format('Y-m'))
+            ->startOfMonth();
+
+        $end = Carbon::createFromFormat('Y-m', $endMonthYear ?? now()->endOfYear()->format('Y-m'))
+            ->endOfMonth();
+
+
         $bookings = Booking::with('customer', 'package', 'addOns', 'billing')
-            ->whereBetween('booking_date', [
-                $startYear . '-01-01 00:00:00',
-                $endYear . '-12-31 23:59:59'
-            ])
+            ->whereBetween('booking_date', [$start->toDateTimeString(), $end->toDateTimeString()])
             ->where('booking_status', Booking::STATUS_APPROVED)
             // ->where('deliverable_status', Booking::STATUS_COMPLETED)
             ->whereHas('billing', function ($query) {

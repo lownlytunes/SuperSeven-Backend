@@ -52,10 +52,10 @@ class ReportController extends BaseController
 
     public function getTransactions(GenerateReportRequest $request)
     {
-        $startYear = $request->input('transaction_start', now()->year);
-        $endYear = $request->input('transaction_end', now()->year);
+        $startMonthYear = $request->input('start_month_year', now()->startOfYear()->format('Y-m'));
+        $endMonthYear = $request->input('end_month_year', now()->endOfYear()->format('Y-m'));
 
-        $bookings = $this->reportService->getTransactions($startYear, $endYear);
+        $bookings = $this->reportService->getTransactions($startMonthYear, $endMonthYear);
 
         $paginated = $bookings->paginate(self::PER_PAGE);
 
@@ -64,10 +64,10 @@ class ReportController extends BaseController
 
     public function getBillingInformation(GenerateReportRequest $request)
     {
-        $startYear = $request->input('billing_start', now()->year);
-        $endYear = $request->input('billing_end', now()->year);
+        $startMonthYear = $request->input('start_month_year', now()->startOfYear()->format('Y-m'));
+        $endMonthYear = $request->input('end_month_year', now()->endOfYear()->format('Y-m'));
 
-        $bookings = $this->reportService->getTransactions($startYear, $endYear);
+        $bookings = $this->reportService->getTransactions($startMonthYear, $endMonthYear);
 
         $paginated = $bookings->paginate(self::PER_PAGE);
 
