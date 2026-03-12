@@ -91,10 +91,10 @@ class GenerateReportController extends BaseController
 
     private function fetchBookingTransactions(GenerateReportRequest $request)
     {
-        $startYear = $request->input('transaction_start', now()->year);
-        $endYear = $request->input('transaction_end', now()->year);
+        $startMonthYear = $request->input('start_month_year', now()->startOfYear()->format('Y-m'));
+        $endMonthYear   = $request->input('end_month_year', now()->endOfYear()->format('Y-m'));
 
-        $bookings = $this->reportService->getTransactions($startYear, $endYear);
+        $bookings = $this->reportService->getTransactions($startMonthYear, $endMonthYear);
 
         return $bookings->get();
     }
